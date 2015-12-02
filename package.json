@@ -49,6 +49,7 @@
     "test": "mocha",
     "compile": "babel src --out-dir dist",
     "prepublish": "npm run compile",
+    "postinstall": "node -e \"require('fs').stat('src', function (e, s) { process.exit(e || !s.isDirectory() ? 1 : 0) })\" || npm run compile",
     "lint": "eslint ."
   }
 }
