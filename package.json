@@ -42,7 +42,8 @@
     "test": "jest",
     "compile": "babel src --out-dir dist",
     "prepublish": "npm run compile",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "node -e \"require('fs').stat('src', function (e, s) { process.exit(e || !s.isDirectory() ? 1 : 0) })\" || npm run compile",
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
